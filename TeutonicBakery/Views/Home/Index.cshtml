@@ -1,0 +1,25 @@
+﻿@model HomeViewModel
+
+<div class="jumbotron">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+    <p class="lead">
+        Consulta la nostra vetrina virtuale e lasciati ingolosire dalle
+        prelibatezze teutoniche della nostra pasticceria!
+    </p>
+    @*<p><a asp-controller="Courses" asp-action="Index" class="btn btn-primary">Sfoglia il catalogo dei corsi <i class="fas fa-angle-right"></i></a></p>*@
+</div>
+
+@*<section>
+        <h2>Aggiunti di recente</h2>
+        @foreach (CourseViewModel course in Model.MostRecentCourses)
+        {
+    <partial name="Courses/_CourseLine" model="@course"></partial>}
+    </section>*@
+
+
+<section>
+    <h2>I dolci attualmente disponibili</h2>
+    @foreach (CourseViewModel course in Model.BestRatingCourses)
+    {
+        <partial name="Courses/_CourseLine" model="@course"></partial>}
+</section>
