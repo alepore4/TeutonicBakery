@@ -8,6 +8,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TeutonicBakery.Models.Options;
+using TeutonicBakery.Models.Services.Application.Pastries;
+using TeutonicBakery.Models.Services.Infrastructure;
 
 namespace TeutonicBakery
 {
@@ -24,6 +27,15 @@ namespace TeutonicBakery
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddTransient<IPastryService, PastryService>();
+            //services.AddTransient<ILessonService, AdoNetLessonService>();
+            services.AddTransient<IDatabaseAccessor, SqliteDatabaseAccessor>();
+
+            //Imposta l'AdoNetUserStore come servizio di persistenza per Identity
+            //identityBuilder.AddUserStore<AdoNetUserStore>();
+            services.AddSingleton<IImagePersister, MagickNetImagePersister>();
+            services.Configure<ConnectionStringsOptions>(Configuration.GetSection("ConnectionStrings"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

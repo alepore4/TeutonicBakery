@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using TeutonicBakery.Models.ViewModels.Pastries;
 
 namespace TeutonicBakery.Models.ViewModels
 {
     public class HomeViewModel
     {
-        public List<DolciViewModel> ListaDolciDisponibili { get; set; }
+        public List<PastryViewModel> AvailablePastriesList { get; set; }
     }
 }

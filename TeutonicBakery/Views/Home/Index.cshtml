@@ -19,7 +19,7 @@
 
 <section>
     <h2>I dolci attualmente disponibili</h2>
-    @foreach (CourseViewModel course in Model.BestRatingCourses)
+    @foreach (PastryViewModel pastry in Model.AvailablePastriesList)
     {
-        <partial name="Courses/_CourseLine" model="@course"></partial>}
+        <partial name="Pastries/_Pastry" model="@pastry"></partial>}
 </section>
