@@ -69,3 +69,70 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+/*Hero Section
+-------------------------------------------------------------*/
+.jumbotron {
+    background-size: cover;
+    background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('/images/hero.jpeg') no-repeat center center scroll;
+    /*background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 37%, rgba(0,0,0,0.65) 100%), url('/images/hero.jpeg') no-repeat center center scroll;*/
+    text-align: center;
+}
+
+.jumbotron h1 {
+    font-size: 3.5rem;
+    color: #eee;
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.lead {
+    font-size: 1.5rem !important;
+    color: #eee !important;
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.8) !important;
+}
+
+/*Pastry
+-------------------------------------------------------*/
+.pastry h2 {
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.pastry-info {
+    margin-bottom: 2em;
+}
+
+.pastry-info aside {
+    background-color: #f5f5f5;
+    padding: 1em;
+    height: 100%;
+}
+
+.pastry-info, .pastry-info .pastry-image {
+    margin-top: 1em;
+}
+
+.pastry-info .price {
+    font-size: 1.3rem;
+}
+
+.pastry-info .buy-pastry {
+    margin-bottom: 1em;
+}
+
+.pastry-ingredients {
+    font-weight: bold;
+}
+
+section + section {
+    margin-top: 2em;
+}
+
+.fa-trash-alt {
+    color: red;
+}

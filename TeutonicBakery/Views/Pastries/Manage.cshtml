@@ -1,0 +1,6 @@
+﻿@model ManageViewModel
+    <h3>I dolci attualmente in database:</h3>
+@foreach (PastryViewModel pastry in Model.AllPastriesList)
+{
+       <partial name="Pastries/_ManagePastry" model="@pastry" />
+}

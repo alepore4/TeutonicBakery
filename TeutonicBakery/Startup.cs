@@ -29,13 +29,11 @@ namespace TeutonicBakery
             services.AddControllersWithViews();
 
             services.AddTransient<IPastryService, PastryService>();
-            //services.AddTransient<ILessonService, AdoNetLessonService>();
             services.AddTransient<IDatabaseAccessor, SqliteDatabaseAccessor>();
-
-            //Imposta l'AdoNetUserStore come servizio di persistenza per Identity
-            //identityBuilder.AddUserStore<AdoNetUserStore>();
             services.AddSingleton<IImagePersister, MagickNetImagePersister>();
             services.Configure<ConnectionStringsOptions>(Configuration.GetSection("ConnectionStrings"));
+            services.AddRazorPages().AddRazorRuntimeCompilation();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

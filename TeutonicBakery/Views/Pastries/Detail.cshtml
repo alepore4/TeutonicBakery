@@ -1,0 +1,40 @@
+﻿@model PastryDetailViewModel
+<section class="pastry-info">
+    <div class="row">
+        <div class="col-md-9">
+            <h1>@Model.Name</h1>
+        </div>
+        <div class="col-md-3 d-flex align-items-end">
+            <a href="#" class="btn disabled btn-success btn-lg btn-block buy-pastry">Acquista</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9" html-sanitize>
+            <h3>@Model.Description</h3>
+        </div>
+        <div class="col-md-3">
+            <aside>
+                <div class="price">
+                    <price current-price="@Model.CurrentPrice" full-price="@Model.Price"></price>
+                </div>
+                <img src="@Model.ImagePath" class="img-fluid pastry-image" alt="@Model.Name" asp-append-version="true">
+            </aside>
+        </div>
+    </div>
+</section>
+
+<section class="pastry-ingredients">
+    <h2>Lista degli ingredienti: </h2>
+    @foreach (var ingredient in Model.Ingredients)
+    {
+<hr>
+                <div class="row">
+                    <div class="col-md-9 d-flex align-items-center px-md-4">
+                        <h3>@ingredient.Name</h3>
+                    </div>
+                    <div class="col-md-3 d-flex align-items-center justify-content-end ingredient-qty px-md-4">
+                        <h3>@ingredient.Quantity @ingredient.UoM</h3>
+                    </div>
+                </div>}
+    <hr>
+</section>

@@ -1,0 +1,20 @@
+﻿@model PastryViewModel
+<hr>
+<div class="row pastry align-items-center d-flex">
+    <div class="col-md-2">
+        <img src="@Model.ImagePath" width="120" height="120" alt="@Model.Name" asp-append-version="true">
+    </div>
+    <div class="col-md-3">
+        <h2>@Model.Name</h2>
+    </div>
+    <div class="col-md-4" title="@Model.Description">
+        <p>@Model.Description</p>
+    </div>
+    <div class="col-md-1 price">
+        <price current-price="@Model.CurrentPrice" full-price="@Model.Price"></price>
+    </div>
+    <div class="col-md-2">
+        <a class="btn btn-outline-primary btn-sm ml-3" asp-controller="Pastry" asp-action="Edit"><i class="fas fa-pencil-alt"></i></a>
+        <a class="btn btn-outline-danger btn-sm ml-3" asp-controller="Pastry" asp-action="Delete"><i class="fas fa-trash-alt"></i></a>
+    </div>
+</div>

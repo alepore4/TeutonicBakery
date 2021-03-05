@@ -14,6 +14,7 @@ namespace TeutonicBakery.Models.ViewModels.Pastries
         public Money CurrentPrice { get; set; }
         public string ImagePath { get; set; }
         public DateTime InsertTime { get; set; }
+        public PastryStatus Status { get; set; }
 
         public static PastryViewModel FromDataRow(DataRow pastryRow)
         {
@@ -27,12 +28,33 @@ namespace TeutonicBakery.Models.ViewModels.Pastries
                     Convert.ToDecimal(pastryRow["Price"])
                 ),
                 ImagePath = Convert.ToString(pastryRow["ImagePath"]),
-                //CurrentPrice = new Money(
-                //    System.Enum.Parse<Currency>(Convert.ToString(pastryRow["CurrentPrice_Currency"])),
-                //    Convert.ToDecimal(pastryRow["CurrentPrice_Amount"])
-                //),
-                
+                InsertTime = Convert.ToDateTime(pastryRow["InsertDateTime"])
             };
+
+            int days = Convert.ToInt32(Math.Floor((DateTime.Now - pastryViewModel.InsertTime).TotalDays));
+
+            if (days > 2)
+            {
+                pastryViewModel.Status = PastryStatus.NotGoodToSell;
+            }
+            else
+            {
+                pastryViewModel.Status = PastryStatus.GoodToSell;
+            }
+
+            decimal discountPrice = (days switch
+            {
+                0 => pastryViewModel.Price.Amount,
+                1 => (pastryViewModel.Price.Amount * 80) / 100,
+                2 => (pastryViewModel.Price.Amount * 20) / 100,
+                _ => 0
+            });
+
+            pastryViewModel.CurrentPrice = new Money(
+                System.Enum.Parse<Currency>(Convert.ToString(pastryRow["Currency"])),
+                discountPrice
+            );
+
             return pastryViewModel;
         }
     }

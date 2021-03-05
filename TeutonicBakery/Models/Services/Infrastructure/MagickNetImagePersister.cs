@@ -25,24 +25,20 @@ namespace TeutonicBakery.Models.Services.Infrastructure
             this.env = env;
         }
 
-        public async Task<string> SavePastryImageAsync(int courseId, IFormFile formFile)
+        public async Task<string> SavePastryImageAsync(int pastryId, IFormFile formFile)
         {
-            //Il metodo WaitAsync ha anche un overload che permette di passare un timeout
-            //Ad esempio, se vogliamo aspettare al massimo 1 secondo:
-            //await semaphore.AwaitAsync(TimeSpan.FromSeconds(1));
-            //Se il timeout scade, il SemaphoreSlim solleverà un'eccezione (così almeno non resta in attesa all'infinito)
             await semaphore.WaitAsync();
             try
             {
                 //Salvare il file
-                string path = $"/Courses/{courseId}.jpg";
-                string physicalPath = Path.Combine(env.WebRootPath, "Courses", $"{courseId}.jpg");
+                string path = $"/Pastries/{pastryId}.jpg";
+                string physicalPath = Path.Combine(env.WebRootPath, "Pastries", $"{pastryId}.jpg");
 
                 using Stream inputStream = formFile.OpenReadStream();
                 using MagickImage image = new(inputStream);
 
                 //Manipolare l'immagine
-                int width = 300;  //Esercizio: ottenere questi valori dalla configurazione
+                int width = 300;
                 int height = 300;
                 MagickGeometry resizeGeometry = new(width, height)
                 {

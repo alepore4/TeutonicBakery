@@ -6,20 +6,15 @@
         Consulta la nostra vetrina virtuale e lasciati ingolosire dalle
         prelibatezze teutoniche della nostra pasticceria!
     </p>
-    @*<p><a asp-controller="Courses" asp-action="Index" class="btn btn-primary">Sfoglia il catalogo dei corsi <i class="fas fa-angle-right"></i></a></p>*@
 </div>
 
-@*<section>
-        <h2>Aggiunti di recente</h2>
-        @foreach (CourseViewModel course in Model.MostRecentCourses)
-        {
-    <partial name="Courses/_CourseLine" model="@course"></partial>}
-    </section>*@
-
-
 <section>
-    <h2>I dolci attualmente disponibili</h2>
+    <h3>I dolci attualmente disponibili</h3>
     @foreach (PastryViewModel pastry in Model.AvailablePastriesList)
     {
-        <partial name="Pastries/_Pastry" model="@pastry"></partial>}
+        if (pastry.Status == TeutonicBakery.Models.Enum.PastryStatus.GoodToSell) 
+        { 
+            <partial name="Pastries/_Pastry" model="@pastry" />
+        }
+    }
 </section>
